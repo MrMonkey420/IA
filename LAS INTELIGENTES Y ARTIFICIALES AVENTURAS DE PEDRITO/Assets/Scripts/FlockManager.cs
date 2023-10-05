@@ -1,26 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FlockManager : MonoBehaviour
 {
-    public GameObject prefab;
-    public int numberOfAgents;
+    public GameObject agentPrefab;
+    public int numberOfAgents = 10;
+    public float spawnRadius = 2.0f;
 
-    public float minSpeed = 1.0f;
-    public float maxSpeed = 4.0f;
-    public float neighbourDistance = 1.5f;
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        SpawnAgents();
     }
 
-    // Update is called once per frame
-    void Update()
+    void SpawnAgents()
     {
-        
+        for (int i = 0; i < numberOfAgents; i++)
+        {
+            Vector3 spawnPosition = transform.position + UnityEngine.Random.insideUnitSphere * spawnRadius;
+            GameObject agent = Instantiate(agentPrefab, spawnPosition, Quaternion.identity);
+        }
     }
 }
