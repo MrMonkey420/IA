@@ -50,7 +50,7 @@ public class FlockManager : MonoBehaviour
     }
     void Update()
     {
-        CalculateCenter();
-        transform.position = center;
+       //CalculateCenter();
+       //transform.position = center;
     }
 }

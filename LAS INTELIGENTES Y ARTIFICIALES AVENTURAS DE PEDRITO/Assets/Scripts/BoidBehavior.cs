@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class BoidBehavior : MonoBehaviour
 {
-    public float BoundRadius = 5f;
+    [SerializeField] private float timer = 1f;
+
     public FlockManager myManager;
-    private SphereCollider bounds;
 
     [SerializeField] private float speed;
     [SerializeField] private Vector3 CohesionPoint;
@@ -80,18 +81,22 @@ public class BoidBehavior : MonoBehaviour
     //------------------------------------------------------------
     void Start()
     {
-        bounds = GetComponent<SphereCollider>();
-        bounds.radius = BoundRadius;
+
     }
     void Update()
     {
+        timer += Time.deltaTime;
+
         Cohesion();
         Separation();
         Alignment();
 
         Direction = (CohesionPoint + AlignmentPoint + SeparationPoint).normalized * speed;
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Direction), myManager.rotationSpeed * Time.deltaTime);
-        transform.Translate(0.0f, 0.0f, Time.deltaTime * speed);
+        if (timer >= 1f)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Direction), myManager.rotationSpeed * Time.deltaTime);
+            transform.Translate((Time.deltaTime * speed * Direction));
+        }
     }
 }
