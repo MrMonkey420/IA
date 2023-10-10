@@ -2,101 +2,75 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BoidBehavior : MonoBehaviour
 {
-    [SerializeField] private float timer = 1f;
-
     public FlockManager myManager;
+    private float timer = 0f;
+    public float speed;
+    bool OutOfBounds = false;
 
-    [SerializeField] private float speed;
-    [SerializeField] private Vector3 CohesionPoint;
-    [SerializeField] private Vector3 SeparationPoint;
-    [SerializeField] private Vector3 AlignmentPoint;
-    [SerializeField] private Vector3 Direction = Vector3.up;
-
-    //-----------------------------------------------------------
-    private void Cohesion()
+    [SerializeField] private Vector3 avoidPoint = Vector3.zero;
+    void ChangeDirection()
     {
-        Vector3 cohesion = Vector3.zero;
-        int num = 0;
+        Vector3 direction;
+        float distance;
+        float nums = 0;
+        float auxSpeed = 0;
+
         foreach (GameObject go in myManager.Fishes)
         {
-            if (go != this.gameObject)
+            if(go != this.gameObject)
             {
-                float distance = Vector3.Distance(go.transform.position, transform.position);
+                distance = Vector3.Distance(go.transform.position, transform.position);
                 if (distance <= myManager.neighbourDistance)
                 {
-                    cohesion += go.transform.position;
-                    num++;
+                    nums++;
+                    if(distance < myManager.minDistance) avoidPoint += transform.position - go.transform.position;
                 }
-            }
-        }
-        if (num > 0)
-            cohesion = (cohesion / num - transform.position).normalized * speed;
-
-        CohesionPoint = cohesion;
-    }
-    private void Separation()
-    {
-        Vector3 separation = Vector3.zero;
-        foreach (GameObject go in myManager.Fishes)
-        {
-            if (go != this.gameObject)
-            {
-                float distance = Vector3.Distance(go.transform.position, transform.position);
-                if (distance <= myManager.neighbourDistance)
-                    separation -= (transform.position - go.transform.position) / (distance * distance);
+                auxSpeed += go.GetComponent<BoidBehavior>().speed;
             }
         }
 
-        SeparationPoint = separation;
-    }
-    private void Alignment()
-    {
-        Vector3 align = Vector3.zero;
-        int num = 0;
-        foreach (GameObject go in myManager.Fishes)
+        if(nums > 0)
         {
-            if (go != this.gameObject)
-            {
-                float distance = Vector3.Distance(go.transform.position, transform.position);
-                if (distance <= myManager.neighbourDistance)
-                {
-                    align += go.GetComponent<BoidBehavior>().Direction;
-                    num++;
-                }
-            }
-        }
-        if (num > 0)
-        {
-            align /= num;
-            speed = Mathf.Clamp(align.magnitude, myManager.minSpeed, myManager.maxSpeed);
-        }
+            speed = auxSpeed / nums;
 
-        AlignmentPoint = align;
+            if(speed >= myManager.maxSpeed) speed = myManager.maxSpeed;
+            //if(speed <= myManager.minSpeed) speed = myManager.minSpeed;
+
+            direction = myManager.centre - avoidPoint - transform.position;
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime);
+        }
     }
 
     //------------------------------------------------------------
     void Start()
     {
-
+        speed = UnityEngine.Random.Range(myManager.minSpeed, myManager.maxSpeed);
     }
     void Update()
     {
-        timer += Time.deltaTime;
+        float distanceToCenter = Vector3.Distance(transform.position, myManager.transform.position);
 
-        Cohesion();
-        Separation();
-        Alignment();
+        if (distanceToCenter >= myManager.neighbourDistance) OutOfBounds = true;
+        else OutOfBounds = false;
 
-        Direction = (CohesionPoint + AlignmentPoint + SeparationPoint).normalized * speed;
-
-        if (timer >= 1f)
+        if(OutOfBounds)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Direction), myManager.rotationSpeed * Time.deltaTime);
-            transform.Translate((Time.deltaTime * speed * Direction));
+            Vector3 direction = myManager.transform.position - transform.position;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), myManager.rotSpeed * Time.deltaTime);
         }
+        else
+        {
+            if(UnityEngine.Random.Range(0, 10) < 1) speed = UnityEngine.Random.Range(myManager.minSpeed, myManager.maxSpeed);
+            else ChangeDirection();
+        }
+
+        transform.Translate(0.0f, 0.0f, Time.deltaTime * speed);
     }
 }

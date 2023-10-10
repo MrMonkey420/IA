@@ -34,7 +34,7 @@ public class Wander : MonoBehaviour
     {
         timeBeforeCD += Time.deltaTime;
 
-        if (timeBeforeCD >= cooldown)
+        if (timeBeforeCD >= 1f && UnityEngine.Random.Range(0, 10) == 0)
         {
             ChangeWorldTarget(); 
             timeBeforeCD = 0.0f;

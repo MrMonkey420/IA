@@ -120,9 +120,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f49704c1f6b22cd49be1635c4e3dd8c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 1
   myManager: {fileID: 0}
+  myAgent: {fileID: 0}
+  minDistance: 0
+  maxDistance: 0
+  neighDistance: 0
   speed: 0
   CohesionPoint: {x: 0, y: 0, z: 0}
   SeparationPoint: {x: 0, y: 0, z: 0}
   AlignmentPoint: {x: 0, y: 0, z: 0}
   Direction: {x: 0, y: 1, z: 0}
+  localTarget: {x: 0, y: 0, z: 0}
+  worldTarget: {x: 0, y: 0, z: 0}
