@@ -15,8 +15,7 @@ public class Patrol : MonoBehaviour
     private void Patroling()
     {
         patrolWP = (patrolWP + 1) % waypoints.Length;
-        //agenthost.SetDestination(waypoints[patrolWP].transform.position);
-        agenthost.destination = waypoints[patrolWP].transform.position;
+        agenthost.SetDestination(waypoints[patrolWP].transform.position);
     }
 
     // Start is called before the first frame update
@@ -29,6 +28,6 @@ public class Patrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!agenthost.pathPending && agenthost.remainingDistance < 10f) Patroling();
+        if (!agenthost.pathPending && agenthost.remainingDistance < 1f) Patroling();
     }
 }
