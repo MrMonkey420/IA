@@ -6,6 +6,7 @@ public class AIVision : MonoBehaviour
 {
     public Camera frustum;
     public LayerMask mask;
+    public bool PlayerDetected = false;
 
     void Update()
     {
@@ -24,7 +25,7 @@ public class AIVision : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, frustum.farClipPlane, mask))
                 {
-                    if (hit.collider.gameObject.CompareTag("your tag"))
+                    if (hit.collider.gameObject.CompareTag("First Person Controller"))
                     {
                         // Your code!!
                     }

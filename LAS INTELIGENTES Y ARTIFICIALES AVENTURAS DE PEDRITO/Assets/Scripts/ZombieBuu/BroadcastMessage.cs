@@ -10,7 +10,7 @@ public class BroadcastMessage : MonoBehaviour
     {
         // Perform actions when a player is detected, e.g., chase the player
         // ...
-        Debug.Log("Player detected!");
+        //Debug.Log("Player detected!");
     }
 
     // Method to be called when a zombie loses sight of the player
@@ -18,7 +18,7 @@ public class BroadcastMessage : MonoBehaviour
     {
         // Perform actions when the player is lost, e.g., stop chasing
         // ...
-        Debug.Log("Player lost!");
+        //Debug.Log("Player lost!");
     }
 
     void Start()
