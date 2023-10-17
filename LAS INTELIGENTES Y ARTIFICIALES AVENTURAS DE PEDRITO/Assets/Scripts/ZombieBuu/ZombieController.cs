@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public enum State
 {
@@ -59,7 +60,12 @@ public class ZombieController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) FollowPlayer();
 
         if(state == State.WANDER) { Wander(15, 15); }
-        if(state == State.CHASING) { destination = player.transform.position; }
+        if(state == State.CHASING)
+        {
+            Vector3 targetDir = player.transform.position - transform.position;
+            float lookAhead = targetDir.magnitude / agent.speed;
+            destination = player.transform.position + player.transform.forward * lookAhead;
+        }
 
         agent.SetDestination(destination);
     }
