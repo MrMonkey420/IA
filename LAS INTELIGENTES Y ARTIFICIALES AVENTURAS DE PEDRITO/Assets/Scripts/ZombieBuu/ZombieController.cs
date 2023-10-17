@@ -13,9 +13,10 @@ public class ZombieController : MonoBehaviour
 {
     public ZombieManager manager;
     public NavMeshAgent agent;
+    public GameObject player;
     public State state;
 
-    public float CoolDown = 2f;
+    public float CoolDown = 0.5f;
     [SerializeField] private float CD_timer = 0.0f;
     [SerializeField] private float mapbounds = 150f;
 
@@ -27,7 +28,7 @@ public class ZombieController : MonoBehaviour
     {
         Vector3 localTarget;
 
-        if (CD_timer >= CoolDown && UnityEngine.Random.Range(0, 10) == 0)
+        if (CD_timer >= CoolDown)
         {
             localTarget = UnityEngine.Random.insideUnitCircle * radius;
             localTarget += new Vector3(0, 0, offset);
@@ -58,7 +59,7 @@ public class ZombieController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) FollowPlayer();
 
         if(state == State.WANDER) { Wander(15, 15); }
-        if(state == State.CHASING) { destination = Vector3.zero; }
+        if(state == State.CHASING) { destination = player.transform.position; }
 
         agent.SetDestination(destination);
     }
