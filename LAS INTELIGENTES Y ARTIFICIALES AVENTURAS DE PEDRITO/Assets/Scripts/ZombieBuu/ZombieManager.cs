@@ -9,7 +9,6 @@ public class ZombieManager : MonoBehaviour
     public GameObject[] Spawners;
 
     public int numZombies;
-    public float velocity;
 
     public void Broadcast()
     {
@@ -23,7 +22,9 @@ public class ZombieManager : MonoBehaviour
         for(int i = 0; i < numZombies; i++)
         {
             Vector3 pos = Spawners[i].transform.position;
-            Zombies[i] = Instantiate(ZombiePrefab, pos, Quaternion.identity);
+            Quaternion rot = UnityEngine.Random.rotation;
+
+            Zombies[i] = Instantiate(ZombiePrefab, pos, rot);
             Zombies[i].GetComponent<ZombieController>().manager = this;
             Zombies[i].GetComponent<AIVision>().GetComponent<ZombieController>().manager = this;
             Zombies[i].transform.parent = this.transform;

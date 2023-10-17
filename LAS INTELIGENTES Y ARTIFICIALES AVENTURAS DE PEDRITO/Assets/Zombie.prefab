@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 272298204964194705}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -74.1, y: 12.2, z: 60.5}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3181060798322235526}
@@ -121,8 +121,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 10
+  m_Acceleration: 200
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -146,7 +146,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  agent: {fileID: 9017030965346158291}
   state: 0
+  CoolDown: 1
+  CD_timer: 0
+  mapbounds: 150
+  destination: {x: 0, y: 0, z: 0}
 --- !u!114 &4976519490867058067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,8 +235,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 50
-  field of view: 60
+  far clip plane: 55
+  field of view: 20
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
