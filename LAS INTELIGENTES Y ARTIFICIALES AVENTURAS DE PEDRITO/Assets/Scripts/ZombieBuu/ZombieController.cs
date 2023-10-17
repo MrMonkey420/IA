@@ -10,8 +10,10 @@ public enum State
 
 public class ZombieController : MonoBehaviour
 {
+    public ZombieManager manager;
     public State state;
 
+    private void FollowPlayer() { state = State.CHASING; }
     void Start()
     {
         state = State.WANDER;
@@ -19,8 +21,7 @@ public class ZombieController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) state=State.CHASING;
+        if (Input.GetKeyDown(KeyCode.Space)) FollowPlayer();
         //detectar player
-        //broadcastmessage
     }
 }

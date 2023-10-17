@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class AIVision : MonoBehaviour
 {
+    public ZombieManager manager;
     public Camera frustum;
     public LayerMask mask;
     public bool PlayerDetected = false;
+
+    private void Start()
+    {
+        manager = GetComponent<ZombieManager>();
+    }
 
     void Update()
     {
@@ -25,9 +31,9 @@ public class AIVision : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, frustum.farClipPlane, mask))
                 {
-                    if (hit.collider.gameObject.CompareTag("First Person Controller"))
+                    if (hit.collider.gameObject.CompareTag("Player"))
                     {
-                        // Your code!!
+                        manager.Broadcast();
                     }
                 }
             }
