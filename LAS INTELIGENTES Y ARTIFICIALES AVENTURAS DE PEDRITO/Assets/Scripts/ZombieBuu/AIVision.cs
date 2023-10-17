@@ -7,12 +7,6 @@ public class AIVision : MonoBehaviour
     public ZombieManager manager;
     public Camera frustum;
     public LayerMask mask;
-    public bool PlayerDetected = false;
-
-    private void Start()
-    {
-        manager = GetComponent<ZombieManager>();
-    }
 
     void Update()
     {
@@ -30,12 +24,8 @@ public class AIVision : MonoBehaviour
                 ray.origin = ray.GetPoint(frustum.nearClipPlane);
 
                 if (Physics.Raycast(ray, out hit, frustum.farClipPlane, mask))
-                {
-                    if (hit.collider.gameObject.CompareTag("Player"))
-                    {
-                        manager.Broadcast();
-                    }
-                }
+                    if (hit.collider.gameObject.CompareTag("Player")) manager.Broadcast();
+                        
             }
         }
     }

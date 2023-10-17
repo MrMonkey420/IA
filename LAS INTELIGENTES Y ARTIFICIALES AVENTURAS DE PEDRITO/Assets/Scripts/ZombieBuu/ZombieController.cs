@@ -23,7 +23,7 @@ public class ZombieController : MonoBehaviour
 
     [SerializeField] private Vector3 destination = Vector3.zero;
 
-    private void FollowPlayer() { state = State.CHASING; Debug.Log("Following player"); }
+    public void FollowPlayer() { state = State.CHASING; Debug.Log("Following player"); }
 
     private void Wander(float offset, float radius) 
     {
@@ -56,8 +56,6 @@ public class ZombieController : MonoBehaviour
         CD_timer += Time.deltaTime;
 
         //detectar player
-
-        if (Input.GetKeyDown(KeyCode.Space)) FollowPlayer();
 
         if(state == State.WANDER) { Wander(15, 15); }
         if(state == State.CHASING)

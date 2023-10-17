@@ -29,8 +29,8 @@ public class ZombieManager : MonoBehaviour
 
             Zombies[i] = Instantiate(ZombiePrefab, pos, rot);
             Zombies[i].GetComponent<ZombieController>().manager = this;
-            Zombies[i].GetComponent<AIVision>().GetComponent<ZombieController>().manager = this;
             Zombies[i].GetComponent<ZombieController>().player = this.player;
+            Zombies[i].GetComponent<AIVision>().manager = this;
             Zombies[i].transform.parent = this.transform;
         }
     }

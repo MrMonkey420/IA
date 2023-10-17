@@ -169,8 +169,7 @@ MonoBehaviour:
   frustum: {fileID: 318419751668286213}
   mask:
     serializedVersion: 2
-    m_Bits: 0
-  PlayerDetected: 0
+    m_Bits: 64
 --- !u!1 &775848103617824309
 GameObject:
   m_ObjectHideFlags: 0
