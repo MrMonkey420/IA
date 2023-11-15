@@ -13,7 +13,6 @@ public class Moves : MonoBehaviour
     public Collider floor;
     GameObject[] hidingSpots;
     NavMeshAgent agent;
-    public Vector3 destination;
 
     void Start()
     {
@@ -114,6 +113,7 @@ public class Moves : MonoBehaviour
         hideCol.Raycast(backRay, out info, distance);
 
 
-        destination = info.point + chosenDir.normalized;
+        Seek(info.point + chosenDir.normalized);
+
     }
 }
