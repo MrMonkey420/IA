@@ -1127,18 +1127,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTasksPerTick: 500
-  behavior: {fileID: 11400000, guid: 0e0a908d476463a42b5f8ac4e4d9f2a8, type: 2}
+  behavior: {fileID: 11400000, guid: 6c8862089a71de741b5e80c537329c9a, type: 2}
   paused: 0
   restartWhenFinished: 0
   blackboard:
     intParams: 
     intParamsNames: []
     intParamsLostDefaultValue: 
-    boolParams: 
-    boolParamsNames: []
+    boolParams: 00
+    boolParamsNames:
+    - isActive
     boolParamsLostDefaultValue: 
-    floatParams: []
-    floatParamsNames: []
+    floatParams:
+    - 1.69
+    floatParamsNames:
+    - closeDistance
     floatParamsLostDefaultValue: 
     stringParams: []
     stringParamsNames: []
@@ -1146,8 +1149,14 @@ MonoBehaviour:
     colorParams: []
     colorParamsNames: []
     colorParamsLostDefaultValue: 
-    objectParams: []
-    objectParamsNames: []
+    objectParams:
+    - {fileID: 382256887}
+    - {fileID: 1718742843}
+    - {fileID: 1867897468}
+    objectParamsNames:
+    - Treasure
+    - Floor
+    - hide_target
     objectParamsLostDefaultValue: 
     layerMaskParams: []
     layerMaskParamsNames: []
@@ -1157,10 +1166,8 @@ MonoBehaviour:
     vector2Params: []
     vector2ParamsNames: []
     vector2ParamsLostDefaultValue: 
-    vector3Params:
-    - {x: 0, y: 0, z: 0}
-    vector3ParamsNames:
-    - hideSpot
+    vector3Params: []
+    vector3ParamsNames: []
     vector3ParamsLostDefaultValue: 
     vector4Params: []
     vector4ParamsNames: []

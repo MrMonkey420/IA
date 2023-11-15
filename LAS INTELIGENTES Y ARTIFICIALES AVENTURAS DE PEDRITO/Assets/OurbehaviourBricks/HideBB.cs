@@ -3,7 +3,7 @@ using Pada1.BBCore;           // Code attributes
 using Pada1.BBCore.Tasks;     // TaskStatus
 using Pada1.BBCore.Framework; // BasePrimitiveAction
 
-[Action("MyActions/Hide")]
+[Action("MyActions/HideBB")]
 [Help("Get the Vector3 for hiding.")]
 public class HideBB : BasePrimitiveAction
 {
@@ -18,7 +18,8 @@ public class HideBB : BasePrimitiveAction
     public override TaskStatus OnUpdate()
     {
         Moves moves = targetGameobject.GetComponent<Moves>();
-        hide = moves.HideValue();
+        moves.Hide();
+        hide = moves.destination;
         return TaskStatus.COMPLETED;
     }
 }
