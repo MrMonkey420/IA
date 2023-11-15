@@ -883,6 +883,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7438494788967298231, guid: b79d0b13355dc8f44b7956db61a82656, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1867897478}
+    - targetCorrespondingSourceObject: {fileID: 7438494788967298231, guid: b79d0b13355dc8f44b7956db61a82656, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1867897471}
     - targetCorrespondingSourceObject: {fileID: 7438494788967298231, guid: b79d0b13355dc8f44b7956db61a82656, type: 3}
       insertIndex: -1
@@ -1139,7 +1142,7 @@ MonoBehaviour:
     - isActive
     boolParamsLostDefaultValue: 
     floatParams:
-    - 1.69
+    - 2
     floatParamsNames:
     - closeDistance
     floatParamsLostDefaultValue: 
@@ -1187,6 +1190,21 @@ MonoBehaviour:
     quaternionParams: []
     quaternionParamsNames: []
     quaternionParamsLostDefaultValue: 
+--- !u!114 &1867897478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867897468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e121559fbbc2def8c7f84846b680f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 859428156}
+  floor: {fileID: 1718742844}
+  destination: {x: 0, y: 0, z: 0}
 --- !u!850595691 &1978793767
 LightingSettings:
   m_ObjectHideFlags: 0
