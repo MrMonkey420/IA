@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class ClickFormation : MonoBehaviour
 {
@@ -16,24 +17,19 @@ public class ClickFormation : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && firstClick == true)
+        if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(camRay, out hit, 100))
             {
-                firstClick = false;
-                SpawnCompanions(hit.point);
-                MoveLeader(hit.point);
-            }
-        }
-        else if (Input.GetMouseButtonDown(0) && firstClick == false)
-        {
-            RaycastHit hit;
-            Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(camRay, out hit, 100))
-            {
-                MoveLeader(hit.point);
+                if (firstClick)
+                {
+                    SpawnCompanions(hit.point);
+                    MoveLeader(hit.point);
+                    firstClick = false;
+                }
+                else MoveLeader(hit.point);
             }
         }
     }
@@ -44,13 +40,19 @@ public class ClickFormation : MonoBehaviour
         isMoving = true;
         if (companions != null)
         {
-            foreach (GameObject companion in companions)
+            Vector3 leaderToClick = destination - transform.position;
+
+            for (uint i = 0; i < companions.Length; i ++)
             {
-                if (companion != null)
+                if (companions[i] != null)
                 {
-                    NavMeshAgent companionAgent = companion.GetComponent<NavMeshAgent>();
+                    Vector3 offset = transform.rotation * Quaternion.AngleAxis(45 * i, Vector3.up) * destination.normalized * 2f;
+                    
+                    Vector3 compDestination = destination + offset;
+
+                    NavMeshAgent companionAgent = companions[i].GetComponent<NavMeshAgent>();
                     companionAgent.enabled = true;
-                    companionAgent.destination = destination;
+                    companionAgent.destination = compDestination;
                 }
             }
         }
@@ -64,8 +66,9 @@ public class ClickFormation : MonoBehaviour
 
         for (int i = 0; i < companions.Length; i++)
         {
-            Vector3 offset = Quaternion.AngleAxis(45 * i, Vector3.up) * leaderToClick.normalized * 2f;
+            Vector3 offset = Quaternion.AngleAxis(45 * i, Vector3.up) * clickPosition.normalized * 2f;
             Vector3 spawnPos = transform.position + offset;
+
             GameObject newCop = Instantiate(copPrefab, spawnPos, rotation);
             newCop.GetComponent<NavMeshAgent>().enabled = false;
             companions[i] = newCop;
