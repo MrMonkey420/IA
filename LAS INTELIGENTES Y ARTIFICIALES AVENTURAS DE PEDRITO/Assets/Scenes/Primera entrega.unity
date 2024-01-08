@@ -1594,7 +1594,6 @@ MonoBehaviour:
   radius: 20
   cooldown: 2.5
   timeBeforeCD: 0
-  mapbounds: 19
   localTarget: {x: 0, y: 0, z: 0}
   worldTarget: {x: 0, y: 0, z: 0}
 --- !u!1 &1131539211
@@ -2504,7 +2503,6 @@ MonoBehaviour:
   radius: 20
   cooldown: 2.5
   timeBeforeCD: 0
-  mapbounds: 19
   localTarget: {x: 0, y: 0, z: 0}
   worldTarget: {x: 0, y: 0, z: 0}
 --- !u!1 &1679971726
@@ -2867,7 +2865,6 @@ MonoBehaviour:
   radius: 20
   cooldown: 2.5
   timeBeforeCD: 0
-  mapbounds: 19
   localTarget: {x: 0, y: 0, z: 0}
   worldTarget: {x: 0, y: 0, z: 0}
 --- !u!1 &2059390685 stripped
@@ -2913,7 +2910,6 @@ MonoBehaviour:
   radius: 20
   cooldown: 2.5
   timeBeforeCD: 0
-  mapbounds: 19
   localTarget: {x: 0, y: 0, z: 0}
   worldTarget: {x: 0, y: 0, z: 0}
 --- !u!1 &2094535514

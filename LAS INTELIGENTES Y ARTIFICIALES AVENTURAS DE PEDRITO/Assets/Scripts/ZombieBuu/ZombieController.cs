@@ -38,11 +38,6 @@ public class ZombieController : MonoBehaviour
             destination.y = 0.0f;
             CD_timer = 0.0f;
         }
-
-        if (destination.x > mapbounds)  { destination.x -= (destination.x / 2); }
-        if (destination.x < -mapbounds) { destination.x -= (destination.x / 2); }
-        if (destination.z > mapbounds)  { destination.z -= (destination.x / 2); }
-        if (destination.z < -mapbounds) { destination.z -= (destination.x / 2); }
     }
 
     void Start()
@@ -57,7 +52,7 @@ public class ZombieController : MonoBehaviour
 
         //detectar player
 
-        if(state == State.WANDER) { Wander(15, 15); }
+        if(state == State.WANDER) { Wander(5, 30); }
         if(state == State.CHASING)
         {
             Vector3 targetDir = player.transform.position - transform.position;

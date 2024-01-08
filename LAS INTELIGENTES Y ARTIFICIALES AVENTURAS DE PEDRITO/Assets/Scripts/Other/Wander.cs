@@ -9,7 +9,6 @@ public class Wander : MonoBehaviour
 {
     public float offset, radius, cooldown;
     [SerializeField] private float timeBeforeCD = 0.0f;
-    [SerializeField] private float mapbounds = 19f;
     [SerializeField] private Vector3 localTarget, worldTarget = Vector3.zero;
 
     private NavMeshAgent agent;
@@ -39,11 +38,6 @@ public class Wander : MonoBehaviour
             ChangeWorldTarget(); 
             timeBeforeCD = 0.0f;
         }
-
-        if(transform.position.x > mapbounds)  { worldTarget.x = -worldTarget.x; }
-        if(transform.position.x < -mapbounds) { worldTarget.x = -worldTarget.x; }
-        if(transform.position.z > mapbounds)  { worldTarget.z = -worldTarget.z; }
-        if(transform.position.z < -mapbounds) { worldTarget.z = -worldTarget.z; }
 
         agent.SetDestination(worldTarget);
     }
