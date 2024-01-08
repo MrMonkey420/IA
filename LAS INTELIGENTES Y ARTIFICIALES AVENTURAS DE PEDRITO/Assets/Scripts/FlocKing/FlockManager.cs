@@ -56,7 +56,7 @@ public class FlockManager : MonoBehaviour
     void Update()
     {
        CalculateCentre();
-       transform.position = centre;
+       //transform.position = centre;
 
        if(UnityEngine.Random.Range(0, 10) < 1)
        {
