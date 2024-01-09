@@ -835,6 +835,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hoard_bug
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92be1080a99448b459d45207c96847c1, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -872,7 +876,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962567946}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30.6, y: 2.42, z: 377.1}
+  m_LocalPosition: {x: 24.23, y: 2.42, z: 367.84}
   m_LocalScale: {x: 0.2895726, y: 0.0115829045, z: 0.2895726}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -937,6 +941,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1323102811177778998, guid: c3745826d5220b247bdcc3f11bcc4656, type: 3}
+      propertyPath: m_Speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993821757631383020, guid: c3745826d5220b247bdcc3f11bcc4656, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2161798607999606808, guid: c3745826d5220b247bdcc3f11bcc4656, type: 3}
       propertyPath: blackboard.objectParams.Array.data[0]
       value: 
@@ -967,19 +979,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242266429400999271, guid: c3745826d5220b247bdcc3f11bcc4656, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.67
+      value: 10.53
       objectReference: {fileID: 0}
     - target: {fileID: 5242266429400999271, guid: c3745826d5220b247bdcc3f11bcc4656, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.07
+      value: 1.0700002
       objectReference: {fileID: 0}
     - target: {fileID: 5242266429400999271, guid: c3745826d5220b247bdcc3f11bcc4656, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 354.44
+      value: 352.1
       objectReference: {fileID: 0}
     - target: {fileID: 5242266429400999271, guid: c3745826d5220b247bdcc3f11bcc4656, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.73702645
+      value: 0.921687
       objectReference: {fileID: 0}
     - target: {fileID: 5242266429400999271, guid: c3745826d5220b247bdcc3f11bcc4656, type: 3}
       propertyPath: m_LocalRotation.x
@@ -987,7 +999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242266429400999271, guid: c3745826d5220b247bdcc3f11bcc4656, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.675864
+      value: -0.38793457
       objectReference: {fileID: 0}
     - target: {fileID: 5242266429400999271, guid: c3745826d5220b247bdcc3f11bcc4656, type: 3}
       propertyPath: m_LocalRotation.z
@@ -999,7 +1011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242266429400999271, guid: c3745826d5220b247bdcc3f11bcc4656, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -85.043
+      value: -45.652
       objectReference: {fileID: 0}
     - target: {fileID: 5242266429400999271, guid: c3745826d5220b247bdcc3f11bcc4656, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1081,20 +1093,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4196293155995875219, guid: cf3521d517236ff45853c0fea9d2ccf1, type: 3}
       propertyPath: m_Name
-      value: Scavenger Variant
+      value: Scavenger
       objectReference: {fileID: 0}
     - target: {fileID: 6310628638206360001, guid: cf3521d517236ff45853c0fea9d2ccf1, type: 3}
       propertyPath: blackboard.objectParams.Array.data[0]
       value: 
-      objectReference: {fileID: 1699143807}
+      objectReference: {fileID: 1468377319}
     - target: {fileID: 6310628638206360001, guid: cf3521d517236ff45853c0fea9d2ccf1, type: 3}
       propertyPath: blackboard.objectParams.Array.data[1]
       value: 
-      objectReference: {fileID: 653657942}
+      objectReference: {fileID: 1699143807}
     - target: {fileID: 6310628638206360001, guid: cf3521d517236ff45853c0fea9d2ccf1, type: 3}
       propertyPath: blackboard.objectParams.Array.data[2]
       value: 
-      objectReference: {fileID: 1468377319}
+      objectReference: {fileID: 653657942}
     - target: {fileID: 9201261236697378218, guid: cf3521d517236ff45853c0fea9d2ccf1, type: 3}
       propertyPath: floor
       value: 
@@ -1373,7 +1385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566267805}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.74, y: 2.834, z: 374.34}
+  m_LocalPosition: {x: 3.15, y: 2.834, z: 372.25}
   m_LocalScale: {x: 0.2895726, y: 0.0115829045, z: 0.2895726}
   m_ConstrainProportionsScale: 0
   m_Children: []
