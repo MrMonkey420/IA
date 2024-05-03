@@ -42,7 +42,7 @@ public class FlockManager : MonoBehaviour
     {
         Fishes = new GameObject[numFishes];
         bounds = GetComponent<SphereCollider>();
-        bounds.radius = swimBounds; 
+        //bounds.radius = swimBounds; 
 
         for (int i = 0; i < numFishes; ++i)
         {
